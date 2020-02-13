@@ -1,0 +1,9 @@
+Si une fonction doit être programmée de manière complètement indépendante d'une structure, elles doivent alors établir un contrat :
+
+	C1:
+	R1) A chaque fois que f a besoin d'une information de struct S, f y accède via une fonction que struct S promet de maintenir accessible.
+	
+	ou
+
+	C2:
+	R1) ........................................................., f y accède via une fonction que l'on promet à f d'être accessible.
