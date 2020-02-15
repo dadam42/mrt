@@ -1,24 +1,23 @@
-#include "minirt.h"
-#include "t__minirt_objects.h"
+#include "minirt_init.h"
 
 t_minirt_com	t_minirt_init(t_minirt *minirt)
 {
-	size_t	count;
+	t_minirt_init_tab*	tab[2];
+	size_t				idx;
+	size_t				tdx;
 
-	count = 0;
-	while (count < MINIRT_COUNT_TYPE)
+	tab[0] = &minirt->counts;
+	tab[1] = &minirt->caps;
+	idx = 0;
+	tdx = 0;
+	while (tdx < 2)
 	{
-		if (t__minirt_objects_init(&(minirt->objs[count])) == minirt_ok)
-			count++;
-		else
+		while (idx < MINIRT_BUFFS_COUNT)
 		{
-			while (count > 0)
-			{
-				t__minirt_objects_release(&(minirt->objs[count]));
-				count--;
-			}
-			return (minirt_error);
+			(*tab[tdx])[idx] = 0;
+			idx++;
 		}
+		tdx++;
 	}
 	return (minirt_ok);
 }

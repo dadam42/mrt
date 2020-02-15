@@ -1,7 +1,8 @@
-typedef enum my_enum {yes, no} t_enum;
-
-t_enum f()
+int main()
 {
-	return (yes);
-}
+	int a[2];
+	int b[2];
 
+	b = a;
+	return (0);	
+}
