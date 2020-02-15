@@ -1,5 +1,5 @@
-#ifndef MINIRT_OBJECT_H
-# define MINIRT_OBJECT_H
+#ifndef MINIRT_H
+# define MINIRT_H
 # include <stdlib.h>
 # define MINIRT_COUNT_TYPE	4
 # define MINIRT_ERROR		1
@@ -17,16 +17,11 @@ typedef union	u_minirt_object
 	t_minirt_graph	graph;
 }				t_minirt_object;
 
-typedef struct	s__minirt_objects
-{
-	t_minirt_object	*pobj;
-	size_t			count;
-	size_t			cap;
-}				t__minirt_objects;
+typedef struct	s__minirt_objects	t__minirt_objects;
 
 typedef struct s_minirt
 {
-	t__minirt_objects 	objs[MINIRT_COUNT_TYPE];
+	t__minirt_objects 	*objs;
 }				t_minirt;
 
 typedef	enum e_minirt_com {minirt_ok, minirt_error} t_minirt_com;
