@@ -1,7 +1,7 @@
 #include "printer.h"
 #include "libft.h"
 
-static int first_is_string(t_list **args)
+static int first_is_string(t_list **arg)
 {
 	int	count;
 	char *c;
@@ -26,7 +26,12 @@ static int first_is_bg(t_list **args)
 	s = (*arg)->content;
 	*args = (*args)->next;
 	count = *(int*)(*args)->content;
-	return (write(1, s, count));	
+	return (printer_mode_first_is_bg(s, count));	
+}
+
+int	printer_mode_first_is_bg(char *s, int count)
+{
+	return (write(1, s, count));
 }
 
 int	printer(t_list **args)
@@ -50,4 +55,22 @@ int	printer(t_list **args)
 		*args = (*args)->next;
 	}
 	return (ret);
+}
+
+int ft_printf(char *str, ...)
+{
+	va_list vaargs;
+	char	*cur;
+
+	va_start(vaargs, str);
+	cur = str;
+	while (cur)
+	{
+		while(*cur != '%')
+			cur++;
+		
+
+	}
+	va_end(vaargs);
+	
 }

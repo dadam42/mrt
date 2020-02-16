@@ -7,9 +7,9 @@ void ft_lstclear(t_list **lst, void(*del)(void *))
 
 	if (lst)
 	{
-		while (*lst && **lst)
+		while (lst && *lst)
 		{
-			del(lst->content);
+			del((*lst)->content);
 			tmp = *lst;
 			(*lst) = (*lst)->next;
 			free(tmp);
